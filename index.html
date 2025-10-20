@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروژه سامانه موبایل ارتباطی مقاوم در برابر اخلال (M-ASRCS)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>سامانه موبایل ارتباطی مقاوم در برابر اخلال (M-ASRCS)</h1>
+        <p>پروژه **پایتون خالص** برای انتقال صدای با کیفیت بالا در ابعاد فشرده و مقاوم در برابر اخلال الکترونیکی</p>
+    </header>
+
+    <div class="container">
+
+        <section id="purpose">
+            <h2>۱. مأموریت و چالش‌های مهندسی</h2>
+            <p>هدف از ساخت این سامانه، ایجاد یک کانال ارتباطی **غیروابسته (Autonomous)** و **قابل حمل (Mobile)** است. تمرکز بر ایجاد یک شبکه **Ad-Hoc (خودسامان)** است که در محیط‌های شهری، ارتباطی با کیفیت بالا (High-Fidelity Audio) و با تأخیر بسیار کم (زیر ۲ ثانیه) را فراهم کند، در حالی که در برابر تهدیدات **حملات الکترونیکی فعال (Active Jamming)** کاملاً مقاوم باشد. این دستگاه به‌طور استراتژیک برای **حمل آسان و ابعاد فشرده (Compact Form Factor)** طراحی شده است.</p>
+        </section>
+
+        <section id="spec-matrix">
+            <h2>۲. معیار مرجع قطعات و کاهش حجم (BOM & Miniaturization Matrix)</h2>
+            <p>این جدول، لیست نهایی سخت‌افزارها را با هدف دستیابی به ابعاد یک واکی‌تاکی **تاکتیکی فشرده (Tactical Compact Build)**، همراه با مدل‌های دقیق و برآورد قیمت ارائه می‌کند:</p>
+
+            <table class="spec-table">
+                <thead>
+                    <tr>
+                        <th>دسته</th>
+                        <th>نام دقیق سخت‌افزار / رابط</th>
+                        <th>مدل دقیق (تراشه کلیدی)</th>
+                        <th>علت انتخاب کوتاه و فنی (فشرده‌سازی)</th>
+                        <th>قیمت حدودی (تومان)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="category"><td colspan="5">واحد پردازش مرکزی و واسط (CPU & Interface)</td></tr>
+                    <tr>
+                        <td>پردازنده اصلی</td>
+                        <td>Raspberry Pi CM4004032</td>
+                        <td class="model">CM4 (4GB RAM, 32GB eMMC)</td>
+                        <td class="rationale">حفظ توان CPU چهار هسته‌ای برای OPUS و FHSS، با کوچک‌ترین حجم.</td>
+                        <td class="price">۱۲,۰۰۰,۰۰۰ - ۱۵,۰۰۰,۰۰۰</td>
+                    </tr>
+                    <tr>
+                        <td>برد واسط مینیاتوری</td>
+                        <td>CM4 to Pi Zero Adapter</td>
+                        <td class="model">Custom CM4 Base Board</td>
+                        <td class="rationale">حذف ابعاد بزرگ برد حامل توسعه برای فشرده‌سازی حداکثری.</td>
+                        <td class="price">۱,۵۰۰,۰۰۰ - ۳,۰۰۰,۰۰۰</td>
+                    </tr>
+
+                    <tr class="category"><td colspan="5">سیستم انرژی و پایداری (Power & Stability)</td></tr>
+                    <tr>
+                        <td>باتری اصلی (ضخامت کم)</td>
+                        <td>بسته باتری لیتیوم-پلیمر (Li-Po)</td>
+                        <td class="model">Li-Po Pack (حداقل 8000mAh)</td>
+                        <td class="rationale">ضخامت بسیار کم برای نصب در پوسته دستی و تأمین جریان بالا.</td>
+                        <td class="price">۱,۵۰۰,۰۰۰ - ۲,۵۰۰,۰۰۰</td>
+                    </tr>
+                    <tr>
+                        <td>ماژول محافظ شارژ</td>
+                        <td>Micro Li-Po BMS Charger 5A</td>
+                        <td class="model">BMS و شارژر مجتمع</td>
+                        <td class="rationale">کوچک‌ترین ورژن BMS برای اشغال فضای کم در کنار حفظ ایمنی.</td>
+                        <td class="price">۲۰۰,۰۰۰ - ۳۵۰,۰۰۰</td>
+                    </tr>
+                    <tr>
+                        <td>رگولاتور ولتاژ کاهنده</td>
+                        <td>Mini DC-DC Buck Converter</td>
+                        <td class="model">MP1584EN (5V/3A)</td>
+                        <td class="rationale">بازده بالا (High Efficiency) در ابعاد بسیار کوچک (SMD) برای ادغام آسان.</td>
+                        <td class="price">۸۰,۰۰۰ - ۱۸۰,۰۰۰</td>
+                    </tr>
+
+                    <tr class="category"><td colspan="5">زیرسیستم صوتی و ادغام I2S (Audio & Integration)</td></tr>
+                    <tr>
+                        <td>میکروفون دیجیتال (ورودی)</td>
+                        <td>ماژول MEMS Mic I2S</td>
+                        <td class="model">SPH0645LM4H</td>
+                        <td class="rationale">اتصال مستقیم دیجیتال (I2S) برای کیفیت بالاتر و حذف نویز آنالوگ.</td>
+                        <td class="price">۲۰۰,۰۰۰ - ۴۵۰,۰۰۰</td>
+                    </tr>
+                    <tr>
+                        <td>DAC/آمپلی‌فایر (خروجی مجتمع)</td>
+                        <td>ماژول I2S Amplifier</td>
+                        <td class="model">MAX98357A (3W)</td>
+                        <td class="rationale">ادغام DAC و تقویت‌کننده در یک تراشه مینیاتوری برای صرفه‌جویی فضایی حداکثری.</td>
+                        <td class="price">۳۰۰,۰۰۰ - ۶۵۰,۰۰۰</td>
+                    </tr>
+                    <tr>
+                        <td>بلندگوی خروجی صدا</td>
+                        <td>Full-Range Speaker</td>
+                        <td class="model">3W, 8 Ohm (Compact Size)</td>
+                        <td class="rationale">توان خروجی متناسب با MAX98357A و ابعاد فشرده برای نصب.</td>
+                        <td class="price">۵۰,۰۰۰ - ۱۲۰,۰۰۰</td>
+                    </tr>
+
+                    <tr class="category"><td colspan="5">مخابرات، رابط‌های فیزیکی و ابزار (RF & Tools)</td></tr>
+                    <tr>
+                        <td>آنتن (قابل حمل)</td>
+                        <td>آنتن تاشو (Folding) ۲.۴GHz</td>
+                        <td class="model">7dBi RP-SMA Folding Antenna</td>
+                        <td class="rationale">کاهش ابعاد جابجایی و حفظ توان تابشی مؤثر برای برد ۱ کیلومتر.</td>
+                        <td class="price">۵۰,۰۰۰ - ۲۰۰,۰۰۰</td>
+                    </tr>
+                    <tr>
+                        <td>کابل اتصال آنتن</td>
+                        <td>Pigtail U.FL/IPEX به RP-SMA</td>
+                        <td class="model">Pigtail Cable (کوتاه)</td>
+                        <td class="rationale">تضمین اتصال فرکانس رادیویی و تزویج امپدانس صحیح در فضای محدود.</td>
+                        <td class="price">۵۰,۰۰۰ - ۱۲۰,۰۰۰</td>
+                    </tr>
+                    <tr>
+                        <td>کلید PTT (فشاری لحظه‌ای)</td>
+                        <td>Momentary Tactile Switch</td>
+                        <td class="model">IP67 Rated (ضد آب و گرد و غبار)</td>
+                        <td class="rationale">مقاومت بالا در برابر محیط و پاسخ سریع برای PTT.</td>
+                        <td class="price">۵۰,۰۰۰ - ۱۰۰,۰۰۰</td>
+                    </tr>
+                    <tr>
+                        <td>پوسته نهایی</td>
+                        <td>محفظه سفارشی (پرینت سه‌بعدی)</td>
+                        <td class="model">Custom 3D Print Enclosure</td>
+                        <td class="rationale">ایجاد دقیق‌ترین شکل ارگونومیک و اختصاصی برای قطعات فشرده.</td>
+                        <td class="price">۱,۰۰۰,۰۰۰ - ۲,۵۰۰,۰۰۰</td>
+                    </tr>
+                    <tr>
+                        <td>سیم‌کشی</td>
+                        <td>سیم‌های رشته‌ای AWG 24 و سیم شیلددار نازک</td>
+                        <td class="model">Shielded Cable & Stranded Wire</td>
+                        <td class="rationale">کاهش تداخل الکترومغناطیسی (EMI) برای صوت و انعطاف‌پذیری سیم‌کشی.</td>
+                        <td class="price">۱۰۰,۰۰۰ - ۲۰۰,۰۰۰</td>
+                    </tr>
+                    <tr>
+                        <td>ابزارهای نرم‌افزاری</td>
+                        <td>Raspberry Pi Imager / rpiboot / SSH Client</td>
+                        <td class="model">نرم‌افزار رایگان و متن‌باز</td>
+                        <td class="rationale">نصب سیستم عامل سبک و دسترسی از راه دور به CM4 برای کدنویسی.</td>
+                        <td class="price">۰</td>
+                    </tr>
+
+                    <tr class="category"><td colspan="5">مجموع تقریبی هزینه‌ها: ۱۷,۷۸۰,۰۰۰ تا ۲۷,۸۵۰,۰۰۰ تومان</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="hardware">
+            <h2>۳. معماری زیربنایی فشرده و منطق انتخاب قطعات (Compact Substrate & Rationale)</h2>
+            <p>انتخاب قطعات بر اساس بالاترین توان محاسباتی و **حداکثر ادغام (Maximum Integration)** است تا ابعاد نهایی دستگاه مشابه یک واکی‌تاکی حرفه‌ای باشد. منطق علمی و فنی انتخاب هر جزء به شرح زیر است:</p>
+
+            <div class="detail-point">
+                <strong>واحد پردازش مرکزی:</strong> <em>Raspberry Pi CM4004032 (4GB RAM, 32GB eMMC)</em>
+                <p><strong>منطق فنی:</strong> این واحد تنها MPU موجود در این ابعاد است که توان پردازشی **چهار هسته‌ای** را برای اجرای **پایتون کامل**، فشرده‌سازی سنگین **کدک OPUS** و مدیریت زمان‌بندی‌های حساس الگوریتم **FHSS** (پرش فرکانسی) فراهم می‌کند. **برد واسط مینیاتوری** (CM4 to Pi Zero Adapter) برای حذف فضای اشغالی برد توسعه بزرگ (CM4-IO-BASE) انتخاب شده است.</p>
+            </div>
+
+            <div class="detail-point">
+                <strong>سیستم تغذیه و فشرده‌سازی توان:</strong> <em>باتری Li-Po (8000mAh) و Mini Buck Converter MP1584EN</em>
+                <p><strong>منطق فنی:</strong> باتری **لیتیوم-پلیمر (Li-Po)** با **ضخامت کم** جایگزین سلول‌های ضخیم 18650 شده تا حجم دستگاه کاهش یابد. **BMS 5A** به صورت کوچک‌شده انتخاب شده و **رگولاتور MP1584EN** یک مبدل **DC-DC Buck** با بازده بالا است که اتلاف انرژی را در فضای بسته به حداقل می‌رساند.</p>
+            </div>
+
+            <div class="detail-point">
+                <strong>زیرسیستم صوتی I2S و ادغام:</strong> <em>میکروفون SPH0645LM4H و آمپلی‌فایر MAX98357A</em>
+                <p><strong>منطق فنی:</strong> برای کاهش حجم و نویز، از **کارت صدای USB خارجی صرف‌نظر** شده است. میکروفون **MEMS I2S (SPH0645LM4H)** اتصال دیجیتال مستقیم به CM4 دارد. تراشه **MAX98357A** نیز همزمان **DAC و تقویت‌کننده کلاس D** را در یک قطعه کوچک ادغام کرده تا فضای فیزیکی به شدت کاهش یابد.</p>
+            </div>
+
+            <div class="detail-point">
+                <strong>مخابرات و رابط‌های فیزیکی:</strong> <em>آنتن تاشو ۷dBi، کابل Pigtail کوتاه و کلید PTT IP67</em>
+                <p><strong>منطق فنی:</strong> **آنتن تاشو** ابعاد جابجایی را کاهش می‌دهد و همچنان با **تزویج امپدانس** صحیح (کابل Pigtail)، توان تابشی (ERP) لازم برای بُرد ۱ کیلومتر را تأمین می‌کند. کلید **IP67 Rated** برای **PTT** (Push-to-Talk) مقاومت محیطی بالایی دارد.</p>
+            </div>
+        </section>
+
+        <section id="interfaces">
+            <h2>۴. اجزای تزویج و واسط‌های حیاتی (Coupling Elements)</h2>
+            <p>این قطعات نقش حیاتی در اتصال ایمن و بهینه تمام اجزا در ساختار فشرده دارند:</p>
+            <ul>
+                <li><strong>برد واسط مینیاتوری:</strong> پلتفرمی که CM4 را به **ابعاد کوچک‌ترین** حالت ممکن کاهش می‌دهد و امکان سیم‌کشی مستقیم GPIOها و I2S را فراهم می‌کند.</li>
+                <li><strong>BMS 5A (کوچک):</strong> سامانه نظارتی که مسئول **تعادل بار (Load Balancing)** سلول‌ها و قطع مدار در شرایط بحرانی (جهت ایمنی و فشرده‌سازی).</li>
+                <li><strong>کابل Pigtail کوتاه (U.FL/IPEX به RP-SMA):</strong> ضروری برای **تزویج امپدانس** بین تراشه Wi-Fi و آنتن، که در نسخه فشرده باید کوتاه‌ترین طول ممکن را داشته باشد تا اتلاف سیگنال حداقل شود.</li>
+                <li><strong>سیم شیلددار نازک و AWG 24:</strong> استفاده از آن برای اتصال میکروفون به CM4 جهت جلوگیری از **تداخلات الکترومغناطیسی (EMI)** و استفاده از سیم‌های نازک AWG 24 برای سیم‌کشی توان در فضای بسته.</li>
+            </ul>
+        </section>
+
+        <section id="process">
+            <h2>۵. گام‌های عملیاتی برای تحقق سامانه (Deployment Pipeline)</h2>
+            <div class="process-step">
+                <strong>۱. ته‌نشینی فریمور و کاهش حجم:</strong> نصب **Raspberry Pi OS Lite** و سپس اتصال مستقیم CM4 به برد واسط مینیاتوری و مونتاژ قطعات فشرده.
+            </div>
+            <div class="process-step">
+                <strong>۲. توسعه پشته پروتکل:</strong> طراحی ساختار بسته داده (Packet Header)، پیاده‌سازی متدهای **رمزنگاری AES-128** و الگوریتم **کدک OPUS** با استفاده از کتابخانه‌های پایتون.
+            </div>
+            <div class="process-step">
+                <strong>۳. مهندسی ضدّاخلال:</strong> توسعه ماژول پایتون برای پایش مستمر **SNR (نسبت سیگنال به نویز)** و فعال‌سازی **الگوریتم پرش فرکانسی (FHSS)** از طریق اسکریپت‌های سیستمی لینوکس در زمان‌های بسیار دقیق.
+            </div>
+            <div class="process-step">
+                <strong>۴. اعتبارسنجی فیزیکی و فشرده‌سازی:</strong> یکپارچه‌سازی تمام زیرسیستم‌ها در **پوسته سفارشی پرینت سه‌بعدی** و انجام تست‌های میدانی برای تأیید عملکرد در ابعاد فشرده.
+            </div>
+        </section>
+
+        <section id="advantages">
+            <h2>۶. پارادایم برتری و مزیت رقابتی</h2>
+            <div class="advantage-item">
+                <strong>**طراحی ارگونومیک تاکتیکی (Tactical Ergonomics):**</strong> استفاده از باتری Li-Po و ادغام‌کننده‌های I2S، حجم کلی را به ابعاد یک واکی‌تاکی حرفه‌ای رسانده، بدون آنکه قدرت CM4 فدا شود.
+            </div>
+            <div class="advantage-item">
+                <strong>**انتقال صوتی با فرکانس بالا (High-Fidelity Transmission):**</strong> توان پردازشی CM4 به ما امکان استفاده از کدک‌های پیشرفته OPUS را می‌دهد که کیفیت صوتی را در کمترین نرخ بیت ممکن حفظ می‌کند.
+            </div>
+            <div class="advantage-item">
+                <strong>**گریز فعال از اخلال (Active Evasion from Jamming):**</strong> سیستم با پیاده‌سازی دقیق **FHSS** در نرم‌افزار، مقاومت سایبری-فیزیکی (Cyber-Physical Resilience) بالاتری نسبت به روش‌های غیرفعال دارد.
+            </div>
+        </section>
+    </div>
+</body>
+</html>
