@@ -1,0 +1,212 @@
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url('Vazirmatn-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0d1117;
+    color: #e5e5e5; /* رنگ متن روشن‌تر */
+    line-height: 1.8;
+    transition: all 0.5s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 25px;
+}
+
+header {
+    background: linear-gradient(135deg, #1f2a40, #0a0e14);
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 5px solid #ff4d6d; /* رنگ نئونی اصلی */
+    box-shadow: 0 5px 20px rgba(255, 77, 109, 0.2);
+}
+
+header h1 {
+    color: #00ffaa; /* رنگ نئونی ثانویه */
+    font-size: 3.5em;
+    margin: 0;
+    text-shadow: 0 0 20px rgba(0, 255, 170, 0.7);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+header p {
+    font-size: 1.5em;
+    color: #a0a0a0;
+    margin-top: 15px;
+    font-weight: 300;
+}
+
+section {
+    padding: 50px 0;
+    border-bottom: 1px dashed #21262d;
+}
+
+h2 {
+    color: #00aaff; /* آبی سایبرپانک */
+    font-size: 2.5em;
+    border-right: 7px solid #ff4d6d;
+    padding-right: 20px;
+    margin-bottom: 35px;
+    font-weight: 800;
+    text-transform: uppercase;
+    box-shadow: -5px 0 10px rgba(0, 170, 255, 0.2); /* جلوه سایه */
+}
+
+h3 {
+    color: #00ffaa;
+    border-bottom: 1px dotted #30363d;
+    padding-bottom: 10px;
+    margin-top: 25px;
+    font-size: 1.7em;
+}
+
+/* استایل‌های جدول گرافیکی */
+.spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.spec-table th, .spec-table td {
+    padding: 15px 12px;
+    text-align: right;
+    border-bottom: 1px solid #333d47;
+    font-size: 0.9em;
+}
+
+.spec-table th {
+    background-color: #1f2a40;
+    color: #00aaff;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 3px solid #00aaff;
+}
+
+.spec-table tr:nth-child(even) {
+    background-color: #161b22;
+}
+
+.spec-table tr:hover {
+    background-color: #21262d;
+    color: #ffffff;
+}
+
+.spec-table .category {
+    font-weight: bold;
+    background-color: #ff4d6d;
+    color: #ffffff;
+    font-size: 1.1em;
+    text-align: center;
+    padding: 12px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.spec-table .model {
+    color: #f0883d;
+    font-weight: bold;
+}
+
+.spec-table .rationale {
+    color: #a0a0a0;
+    font-style: italic;
+    font-size: 0.8em;
+}
+
+.spec-table .price {
+    color: #4ac967;
+    font-weight: bold;
+}
+
+.detail-point {
+    background-color: #161b22;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-right: 5px solid #00ffaa;
+    border-radius: 5px;
+}
+
+.detail-point strong {
+    color: #ff4d6d;
+}
+
+.detail-point em {
+    color: #00aaff;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.hardware-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.hardware-item {
+    background-color: #161b22;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s ease;
+    border-right: 5px solid #ff4d6d;
+}
+
+.hardware-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 30px rgba(255, 77, 109, 0.3);
+}
+
+.hardware-item h3 {
+    color: #00ffaa;
+    border-bottom: 2px solid #30363d;
+    padding-bottom: 12px;
+    margin-top: 0;
+    font-size: 1.4em;
+}
+
+.hardware-item .rationale {
+    color: #4ac967;
+    font-style: italic;
+    margin-top: 10px;
+    font-size: 1em;
+}
+
+.process-step {
+    background-color: #161b22;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 7px;
+    border-left: 6px solid #4ac967;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.process-step strong {
+    color: #00ffaa;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.advantage-item {
+    background-color: #161b22;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 7px;
+    border-left: 6px solid #00aaff;
+    font-weight: 500;
+}
+
+.advantage-item strong {
+    color: #00ffaa;
+}
